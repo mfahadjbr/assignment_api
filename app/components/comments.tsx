@@ -10,10 +10,14 @@ export default function Comments(props: any) {
                     <div className="flex items-center mb-4">
                         <div className="mr-4">
                             <Image
-                                className="w-10 h-10 rounded-full"
-                                src={`https://ui-avatars.com/api/?name=${commentData.name}&background=random`}
-                                alt={commentData.name}
+                            className="w-10 h-10 rounded-full"
+                            src={`https://ui-avatars.com/api/?name=${commentData.name}&background=random`}
+                            alt={commentData.name}
+                            width={200}
+                            height={200}
+                            unoptimized={true}  // Disable Next.js image optimization for external URLs
                             />
+
                         </div>
                         <div>
                             <p className="text-lg font-semibold">{commentData.email}</p>
