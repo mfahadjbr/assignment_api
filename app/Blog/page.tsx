@@ -1,4 +1,4 @@
-import PostCards from '../components/PostCards';
+import PostCards from '@/app/components/PostCards';
 import Link from 'next/link';
 
 // Function to fetch all posts

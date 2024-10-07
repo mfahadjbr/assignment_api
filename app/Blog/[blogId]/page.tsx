@@ -1,12 +1,5 @@
 import Comments from '@/app/components/comments';
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
 const getspecificData = async (params: any) => {
   const responses = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.blogId}`);
   if (responses.ok) {
