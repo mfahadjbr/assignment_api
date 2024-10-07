@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Image from 'next/image'
 export default function Comments(props: any) {
     const { commentData } = props
     return (
@@ -9,7 +9,7 @@ export default function Comments(props: any) {
                     {/* Commenter Information */}
                     <div className="flex items-center mb-4">
                         <div className="mr-4">
-                            <img
+                            <Image
                                 className="w-10 h-10 rounded-full"
                                 src={`https://ui-avatars.com/api/?name=${commentData.name}&background=random`}
                                 alt={commentData.name}

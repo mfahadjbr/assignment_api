@@ -1,4 +1,4 @@
-import Comments from '@/app/components/comments';
+import Comments from "@/app/components/comments";
 
 const getspecificData = async (params: any) => {
   const responses = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.blogId}`);
