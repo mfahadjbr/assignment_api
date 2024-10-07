@@ -1,11 +1,31 @@
 import Comments from "@/app/components/comments";
 
-const getspecificData = async (params: any) => {
+// Define the types for Post and Comment
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface Comment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
+interface Params {
+  blogId: string;
+}
+
+const getspecificData = async (params: Params): Promise<{ PostspecificData: Post | null; commentsData: Comment[] }> => {
   const responses = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.blogId}`);
   if (responses.ok) {
-    const specificData = await responses.json();
+    const specificData: Post = await responses.json();
     const responseComments = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.blogId}/comments`);
-    const commentsData = await responseComments.json();
+    const commentsData: Comment[] = await responseComments.json();
     return {
       PostspecificData: specificData,
       commentsData: commentsData,
@@ -17,8 +37,12 @@ const getspecificData = async (params: any) => {
   };
 };
 
-export default async function blogId({ params }: any) {
-  const data: any = await getspecificData(params);
+interface BlogIdProps {
+  params: Params;
+}
+
+export default async function blogId({ params }: BlogIdProps) {
+  const data = await getspecificData(params);
 
   return (
     <div>
@@ -31,7 +55,7 @@ export default async function blogId({ params }: any) {
 
         {/* Comments Section */}
         {data.commentsData &&
-          data.commentsData.map((com: any) => {
+          data.commentsData.map((com: Comment) => {
             return <Comments key={com.id} commentData={com} />;
           })}
       </div>
