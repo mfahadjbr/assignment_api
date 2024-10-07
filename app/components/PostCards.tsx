@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Image from 'next/image'
 export default function PostCards(props:any) {
     const { postData } = props
     
@@ -8,10 +8,12 @@ export default function PostCards(props:any) {
             <div className="flex ">
                 <div className="max-w-sm rounded-2xl shadow-2xl bg-white m-4">
                     {/* Post Image */}
-                    <img
+                    <Image
                         className="w-full rounded-t-2xl"
                         src="https://via.placeholder.com/400x200"
                         alt="Post Image"
+                        width={200}
+                        height={200}
                     />
 
                     {/* Post Content */}
